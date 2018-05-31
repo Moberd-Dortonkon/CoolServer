@@ -36,6 +36,7 @@ public class TestContoller {
     	}
     	
     }
+    @RequestMapping("/insertIntoBolonteers")
     public String insertIntoGroup(@RequestParam(value="volonteerName",defaultValue="")String volonteerName,
     		@RequestParam(value="groupid",defaultValue="")String groupid)
     {
@@ -43,6 +44,8 @@ public class TestContoller {
     	else return "not complete";
     	
     }
+    
+    
   
     
     
@@ -54,10 +57,9 @@ public class TestContoller {
     
     
     
-    
-    
-    
-    
+    @RequestMapping("")
+    public String start() {return "HELLO";}
+        
     private String createPassword() 
 	{
 		   SecureRandom secureRandom = new SecureRandom();
