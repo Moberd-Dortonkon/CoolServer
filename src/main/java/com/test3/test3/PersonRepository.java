@@ -24,7 +24,8 @@ public class PersonRepository {
 		if(count>0)return 0;
 		else 
 		{          jdc.update("insert into coordinates(groupid,latlng)values(?,?);",groupid,null);
-			return jdc.update("insert into volonteerGroups(leaderid,groupid,grouptype,leadername)values(?,?,?,?)",leaderid,groupid,grouptype,leadername);
+			return jdc.update("insert into volonteerGroups(leaderid,groupid,grouptype,leadername,groupname)values(?,?,?,?,?)"
+					,leaderid,groupid,grouptype,leadername,groupName);
 		}
 		
 	}

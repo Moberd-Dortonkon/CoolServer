@@ -1,6 +1,8 @@
 package com.test3.test3;
 
 import java.security.SecureRandom;
+import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,7 +38,7 @@ public class TestContoller {
     	}
     	
     }
-    @RequestMapping("/insertIntoBolonteers")
+    @RequestMapping("/insertIntoVolonteers")
     public String insertIntoGroup(@RequestParam(value="volonteerName",defaultValue="")String volonteerName,
     		@RequestParam(value="groupid",defaultValue="")String groupid)
     {
@@ -44,7 +46,59 @@ public class TestContoller {
     	else return "not complete";
     	
     }
+    @RequestMapping("/set/come")
+    public String setCome(@RequestParam(value="volonteerName",defaultValue="")String volonteerName,
+    		@RequestParam(value="groupid",defaultValue="")String groupid,
+    		@RequestParam(value="come",defaultValue="")String come) 
+    {
+    	if(come.equals("true")) {jdc.setCome(volonteerName, groupid, true);return "complete";}
+    	if(come.equals("false")) {jdc.setCome(volonteerName, groupid, false);return "complete";}
+    	else return "notcomplete";
     
+    	
+    }
+    @RequestMapping("/set/eat")
+    public String setEat(@RequestParam(value="volonteerName",defaultValue="")String volonteerName,
+    		@RequestParam(value="groupid",defaultValue="")String groupid,
+    		@RequestParam(value="come",defaultValue="")String eat) 
+    {
+    	if(eat.equals("true")) {jdc.setEat(volonteerName, groupid, true);return "complete";}
+    	if(eat.equals("false")) {jdc.setEat(volonteerName, groupid, false);return "complete";}
+    	else return "notcomplete";
+    
+    	
+    }
+    
+    
+    @RequestMapping("/display/groups")
+    public HashMap<String,Group>displayGroups()
+    {
+    	return jdc.displayGroup();
+    }
+    @RequestMapping("/display/myGroup")
+    public List<Group>displayMyGroups(@RequestParam(value="leaderid",defaultValue="")String leaderid)
+    {
+    	return jdc.displayMyGroups(leaderid);
+    }
+    @RequestMapping("/display/volonteers")
+    public HashMap<String,Volonteer>display(@RequestParam(value="groupid",defaultValue="")String groupid)
+    {
+    	return jdc.display(groupid);
+    	
+    }
+    @RequestMapping("/coordinates/set")
+	public String insertCoordinates(@RequestParam(value="groupid",defaultValue="")String groupid,@RequestParam(value="latlng",defaultValue="")String latlng)
+	{
+    	  jdc.insertCoordinates(groupid, latlng);
+		  return latlng;
+	}
+    @RequestMapping("/coordinates/get")
+    
+	public String getCoordiantes(@RequestParam(value="groupid",defaultValue="")String groupid)
+	{
+		return jdc.getCoordiantes(groupid);
+		
+	}
     
   
     
