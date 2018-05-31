@@ -20,7 +20,7 @@ public class PersonRepository {
 	public int createGroup(String leaderid,String groupid,String grouptype,String leadername,String groupName)
 	{
 		
-		int count = jdc.queryForObject("select (*) from leaderid where groupid=?", new Object[] {groupid},Integer.class);
+		int count = jdc.queryForObject("select count (*) from leaderid where groupid=?", new Object[] {groupid},Integer.class);
 		if(count>0)return 0;
 		else 
 		{          jdc.update("insert into coordinates(groupid,latlng)values(?,?);",groupid,null);
