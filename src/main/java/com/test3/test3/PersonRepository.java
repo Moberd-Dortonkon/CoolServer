@@ -13,7 +13,7 @@ public class PersonRepository {
 	private JdbcTemplate jdc;
     public int createLeader(String leaderid)
     {
-    	int count = jdc.queryForObject("select (*) from leaderid where leaderid=?", new Object[] {leaderid},Integer.class);
+    	int count = jdc.queryForObject("select count(*) from leaderid where leaderid=?", new Object[] {leaderid},Integer.class);
     	if(count==0) {return jdc.update("insert into leaderid(leaderid)values(?)",leaderid);}
     	else return 0;
     }
