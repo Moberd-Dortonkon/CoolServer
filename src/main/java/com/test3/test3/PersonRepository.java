@@ -57,7 +57,7 @@ public class PersonRepository {
 	}
 	public List<Group> displayMyGroups(String leaderid)
 	{
-		return jdc.query("select * from volonteerGroup where groupid=?", new GroupMapper(),leaderid);
+		return jdc.query("select * from volonteerGroups where groupid=?", new GroupMapper(),leaderid);
 	}
 	public int insertCoordinates(String groupid,String latlng)
 	{
@@ -66,13 +66,13 @@ public class PersonRepository {
 	}
 	public String getCoordiantes(String groupid)
 	{
-		return jdc.queryForObject("select latlng from coordinates where grouppassword=?;",new Object[] {groupid},String.class);
+		return jdc.queryForObject("select latlng from coordinates where groupid=?;",new Object[] {groupid},String.class);
 		
 	}
 	
     public HashMap<String,Volonteer> display(String groupid)
     {
-    	List<Volonteer> volonteers=jdc.query("Select * from volonteers where grouppassword=? and type=false;",new VolonteerMapper(),groupid);
+    	List<Volonteer> volonteers=jdc.query("Select * from volonteers where groupid=? and type=false;",new VolonteerMapper(),groupid);
     
     	HashMap<String,Volonteer> vGroup = new HashMap<String,Volonteer>();
     	if(!volonteers.isEmpty())
@@ -81,6 +81,11 @@ public class PersonRepository {
     		vGroup.put(v.getName(),v);
     	}
     	return vGroup;
+    }
+    public Volonteer getInformation(String groupid,String name)
+    {
+    	return jdc.queryForObject("select * from volonteers where groupid =? and volonteername =?", new VolonteerMapper(),groupid,name);
+		
     }
 	
 }

@@ -26,7 +26,7 @@ public class TestContoller {
         }
     }
     @RequestMapping("/create/group")
-    public String createGroup(@RequestParam(value="lName",defaultValue="")String leaderid,
+    public String createGroup(@RequestParam(value="leaderid",defaultValue="")String leaderid,
     		@RequestParam(value="grouptype",defaultValue="")String grouptype
     		,@RequestParam(value="leadername",defaultValue="")String leadername,
             @RequestParam(value="groupname",defaultValue="")String groupName)
@@ -68,8 +68,6 @@ public class TestContoller {
     
     	
     }
-    
-    
     @RequestMapping("/display/groups")
     public HashMap<String,Group>displayGroups()
     {
@@ -85,6 +83,14 @@ public class TestContoller {
     {
     	return jdc.display(groupid);
     	
+    }
+    @RequestMapping("/display/me")
+    public String getMyInformation(String groupid,String name)
+    {
+    	
+    	 Volonteer v =jdc.getInformation(groupid, name);
+	       Gson gson = new Gson();
+	       return gson.toJson(v);
     }
     @RequestMapping("/coordinates/set")
 	public String insertCoordinates(@RequestParam(value="groupid",defaultValue="")String groupid,@RequestParam(value="latlng",defaultValue="")String latlng)
