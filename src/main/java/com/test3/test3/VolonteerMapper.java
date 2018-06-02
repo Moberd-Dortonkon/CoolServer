@@ -13,7 +13,7 @@ public class VolonteerMapper implements RowMapper<Volonteer> {
 		
 		
 		Volonteer volonteer = new Volonteer(null, false, false);
-		volonteer.setName(rs.getString("name"));
+		volonteer.setName(rs.getString("volonteername"));
 		volonteer.setCome(rs.getBoolean("come"));
 		volonteer.setEat(rs.getBoolean("eat"));
 		return volonteer;
