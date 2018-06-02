@@ -1,6 +1,7 @@
 package com.test3.test3;
 
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -80,9 +81,9 @@ public class TestContoller {
     	return jdc.displayMyGroups(leaderid);
     }
     @RequestMapping("/display/volonteers")
-    public HashMap<String,Volonteer>display(@RequestParam(value="groupid",defaultValue="")String groupid)
+    public DisplayVolonteers display(@RequestParam(value="groupid",defaultValue="")String groupid)
     {
-    	return jdc.display(groupid);
+    	return new DisplayVolonteers(jdc.display(groupid));
     	
     }
     @RequestMapping("/display/me")
@@ -119,7 +120,15 @@ public class TestContoller {
     
     
     @RequestMapping("")
-    public String start() {return "HELLO";}
+    public List<Group> start()
+    
+    {
+            List<Group>groups=new ArrayList<Group>();
+            groups.add(new Group("test","test","test","test","test"));
+            groups.add(new Group("test","test","test","test","test"));
+            groups.add(new Group("test","test","test","test","test"));
+            groups.add(new Group("test","test","test","test","test"));
+    	return groups;}
         
     private String createPassword() 
 	{
