@@ -72,7 +72,7 @@ public class PersonRepository {
 	
     public HashMap<String,Volonteer> display(String groupid)
     {
-    	List<Volonteer> volonteers=jdc.query("Select * from volonteers where groupid=? and type=false;",new VolonteerMapper(),groupid);
+    	List<Volonteer> volonteers=jdc.query("Select * from volonteers where groupid=?;",new VolonteerMapper(),groupid);
     
     	HashMap<String,Volonteer> vGroup = new HashMap<String,Volonteer>();
     	if(!volonteers.isEmpty())
