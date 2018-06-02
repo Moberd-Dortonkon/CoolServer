@@ -5,11 +5,21 @@ public class Group {
 	String leaderName;
 	String groupid;
 	String groupName;
-	public Group(String groupType, String leaderName, String groupid, String groupName) {
+	String groupdescription;
+
+	public Group(String groupType, String leaderName, String groupid, String groupName, String groupdescription) {
+		super();
 		this.groupType = groupType;
 		this.leaderName = leaderName;
 		this.groupid = groupid;
 		this.groupName = groupName;
+		this.groupdescription = groupdescription;
+	}
+	public String getGroupdescription() {
+		return groupdescription;
+	}
+	public void setGroupdescription(String groupdescription) {
+		this.groupdescription = groupdescription;
 	}
 	public String getGroupName() {
 		return groupName;

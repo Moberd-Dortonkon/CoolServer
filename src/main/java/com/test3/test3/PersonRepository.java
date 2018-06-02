@@ -17,15 +17,15 @@ public class PersonRepository {
     	if(count==0) {return jdc.update("insert into leaderid(leaderid)values(?)",leaderid);}
     	else return 0;
     }
-	public int createGroup(String leaderid,String groupid,String grouptype,String leadername,String groupName)
+	public int createGroup(String leaderid,String groupid,String grouptype,String leadername,String groupName,String description)
 	{
 		
 		int count = jdc.queryForObject("select count(*) from volonteerGroups where groupid=?", new Object[] {groupid},Integer.class);
 		if(count>0)return 0;
 		else 
 		{          jdc.update("insert into coordinates(groupid,latlng)values(?,?);",groupid,null);
-			return jdc.update("insert into volonteerGroups(leaderid,groupid,grouptype,leadername,groupname)values(?,?,?,?,?)"
-					,leaderid,groupid,grouptype,leadername,groupName);
+			return jdc.update("insert into volonteerGroups(leaderid,groupid,grouptype,leadername,groupname,description)values(?,?,?,?,?,?)"
+					,leaderid,groupid,grouptype,leadername,groupName,description);
 		}
 		
 	}

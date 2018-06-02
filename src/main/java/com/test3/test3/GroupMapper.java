@@ -10,7 +10,11 @@ public class GroupMapper implements RowMapper<Group> {
 	@Override
 	public Group mapRow(ResultSet rs, int arg1) throws SQLException {
 		// TODO Auto-generated method stub	
-		return new Group(rs.getString("grouptype"),rs.getString("leadername"),rs.getString("groupid"),rs.getString("groupname"));
+		return new Group(rs.getString("grouptype"),
+				rs.getString("leadername"),
+				rs.getString("groupid"),
+				rs.getString("groupname"),
+				rs.getString("description"));
 	}
 
 }

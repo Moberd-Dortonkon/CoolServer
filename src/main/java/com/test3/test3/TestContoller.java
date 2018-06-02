@@ -29,12 +29,13 @@ public class TestContoller {
     public String createGroup(@RequestParam(value="leaderid",defaultValue="")String leaderid,
     		@RequestParam(value="grouptype",defaultValue="")String grouptype
     		,@RequestParam(value="leadername",defaultValue="")String leadername,
-            @RequestParam(value="groupname",defaultValue="")String groupName)
+            @RequestParam(value="groupname",defaultValue="")String groupName,
+            @RequestParam(value="description",defaultValue="")String description)
     {
     	while(true)
     	{
     	  String groupid = createPassword()	;
-    	  if(jdc.createGroup(leaderid, groupid, grouptype, leadername, groupName)==1)return "complete";
+    	  if(jdc.createGroup(leaderid, groupid, grouptype, leadername, groupName,description)==1)return "complete";
     	}
     	
     }
