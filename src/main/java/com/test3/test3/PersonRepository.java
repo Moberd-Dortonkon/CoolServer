@@ -44,16 +44,16 @@ public class PersonRepository {
 		return jdc.update("update volonteers set eat=? where volonteerName=? and groupid=?",eat,volonteerName,groupid);
 		
 	}
-	public HashMap<String,Group>displayGroup()
+	public List<Group>displayGroup()
 	{
 		HashMap<String,Group>leaders=new HashMap<String, Group>();
-	    List<Group>lgroup=jdc.query("select * from volonteerGroups", new GroupMapper());
-	    if(!lgroup.isEmpty())
-	    	for(Group g:lgroup)
-	    	{
-	    		leaders.put(g.groupType, g);
-	    	}
-		return leaders;
+	    return jdc.query("select * from volonteerGroups", new GroupMapper());
+	 //   if(!lgroup.isEmpty())
+	 //   	for(Group g:lgroup)
+	 //   	{
+	   // 		leaders.put(g.groupType, g);
+	   // 	}
+		//return leaders;
 	}
 	public List<Group> displayMyGroups(String leaderid)
 	{

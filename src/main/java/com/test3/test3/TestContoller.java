@@ -71,7 +71,7 @@ public class TestContoller {
     	
     }
     @RequestMapping("/display/groups")
-    public HashMap<String,Group>displayGroups()
+    public List<Group>displayGroups()
     {
     	return jdc.displayGroup();
     }
