@@ -57,7 +57,7 @@ public class PersonRepository {
 	}
 	public List<Group> displayMyGroups(String leaderid)
 	{
-		return jdc.query("select * from volonteerGroups where groupid=?", new GroupMapper(),leaderid);
+		return jdc.query("select * from volonteerGroups where leaderid=?", new GroupMapper(),leaderid);
 	}
 	public int insertCoordinates(String groupid,String latlng)
 	{
