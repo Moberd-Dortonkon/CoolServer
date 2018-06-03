@@ -14,7 +14,8 @@ public class GroupMapper implements RowMapper<Group> {
 				rs.getString("leadername"),
 				rs.getString("groupid"),
 				rs.getString("groupname"),
-				rs.getString("description"));
+				rs.getString("description"),
+				rs.getString("coordinates"));
 	}
 
 }

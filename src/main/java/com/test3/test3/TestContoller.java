@@ -18,12 +18,12 @@ public class TestContoller {
     @Autowired
     private PersonRepository jdc;
     @RequestMapping("/create/leader")
-    public String createLeader()
+    public String createLeader(@RequestParam(value="name",defaultValue="")String name)
     {	
         while(true)
         {
         	String s = createPassword();
-        	if(jdc.createLeader(s)==1)return s;
+        	if(jdc.createLeader(s,name)==1)return s;
         }
     }
     @RequestMapping("/create/group")
@@ -41,31 +41,31 @@ public class TestContoller {
     	
     }
     @RequestMapping("/insertIntoVolonteers")
-    public String insertIntoGroup(@RequestParam(value="volonteerName",defaultValue="")String volonteerName,
+    public String insertIntoGroup(@RequestParam(value="volonteerid",defaultValue="")String volonteerid,
     		@RequestParam(value="groupid",defaultValue="")String groupid)
     {
-    	if(jdc.insertIntoGroup(volonteerName, groupid)==1)return "complete";
+    	if(jdc.insertIntoGroup(volonteerid, groupid)==1)return "complete";
     	else return "not complete";
     	
     }
     @RequestMapping("/set/come")
-    public String setCome(@RequestParam(value="volonteerName",defaultValue="")String volonteerName,
+    public String setCome(@RequestParam(value="volonteerid",defaultValue="")String volonteerid,
     		@RequestParam(value="groupid",defaultValue="")String groupid,
     		@RequestParam(value="come",defaultValue="")String come) 
     {
-    	if(come.equals("true")) {jdc.setCome(volonteerName, groupid, true);return "complete";}
-    	if(come.equals("false")) {jdc.setCome(volonteerName, groupid, false);return "complete";}
+    	if(come.equals("true")) {jdc.setCome(volonteerid, groupid, true);return "complete";}
+    	if(come.equals("false")) {jdc.setCome(volonteerid, groupid, false);return "complete";}
     	else return "notcomplete";
     
     	
     }
     @RequestMapping("/set/eat")
-    public String setEat(@RequestParam(value="volonteerName",defaultValue="")String volonteerName,
+    public String setEat(@RequestParam(value="volonteerid",defaultValue="")String volonteerid,
     		@RequestParam(value="groupid",defaultValue="")String groupid,
     		@RequestParam(value="come",defaultValue="")String eat) 
     {
-    	if(eat.equals("true")) {jdc.setEat(volonteerName, groupid, true);return "complete";}
-    	if(eat.equals("false")) {jdc.setEat(volonteerName, groupid, false);return "complete";}
+    	if(eat.equals("true")) {jdc.setEat(volonteerid, groupid, true);return "complete";}
+    	if(eat.equals("false")) {jdc.setEat(volonteerid, groupid, false);return "complete";}
     	else return "notcomplete";
     
     	
@@ -110,29 +110,22 @@ public class TestContoller {
     
   
     
-    
-    
-    
-    
-    
-    
-    
-    
+   
     
     @RequestMapping("")
     public List<Group> start()
     
     {
             List<Group>groups=new ArrayList<Group>();
-            groups.add(new Group("test","test","test","test","test"));
-            groups.add(new Group("test","test","test","test","test"));
-            groups.add(new Group("test","test","test","test","test"));
-            groups.add(new Group("test","test","test","test","test"));
-    	return groups;}
+            groups.add(new Group("test","test","test","test","test","test"));
+            groups.add(new Group("test","test","test","test","test","test"));
+            groups.add(new Group("test","test","test","test","test","test"));
+            groups.add(new Group("test","test","test","test","test","test"));
+           	return groups;}
         
     private String createPassword() 
 	{
-		   SecureRandom secureRandom = new SecureRandom();
+		    SecureRandom secureRandom = new SecureRandom();
 	        String s="Aaa";
 	        String summ="";
 	        for(int i =0;i<s.length();i++)

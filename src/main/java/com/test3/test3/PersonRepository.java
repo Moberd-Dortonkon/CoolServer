@@ -11,10 +11,10 @@ import org.springframework.stereotype.Component;
 public class PersonRepository {
 	@Autowired
 	private JdbcTemplate jdc;
-    public int createLeader(String leaderid)
+    public int createLeader(String leaderid,String name)
     {
     	int count = jdc.queryForObject("select count(*) from leaderid where leaderid=?", new Object[] {leaderid},Integer.class);
-    	if(count==0) {return jdc.update("insert into leaderid(leaderid)values(?)",leaderid);}
+    	if(count==0) {return jdc.update("insert into leaderid(leaderid,name)values(?,?)",leaderid,name);}
     	else return 0;
     }
 	public int createGroup(String leaderid,String groupid,String grouptype,String leadername,String groupName,String description)
@@ -29,14 +29,14 @@ public class PersonRepository {
 		}
 		
 	}
-	public int insertIntoGroup(String volonteerName,String groupid)
+	public int insertIntoGroup(String volonteerid,String groupid)
 	{
-		return jdc.update("insert into volonteers(volonteername,groupid,come,eat)values(?,?,false,false)",volonteerName,groupid);
+		return jdc.update("insert into volonteers(volonteername,groupid,come,eat)values(?,?,false,false)",volonteerid,groupid);
 		
 	}
-	public int setCome(String volonteerName,String groupid,boolean come)
+	public int setCome(String volonteerid,String groupid,boolean come)
 	{
-		return jdc.update("update volonteers set come=? where volonteerName=? and groupid=?",come,volonteerName,groupid);
+		return jdc.update("update volonteers set come=? where volonteerName=? and groupid=?",come,volonteerid,groupid);
 		
 	}
 	public int setEat(String volonteerName,String groupid,boolean eat)
@@ -61,24 +61,24 @@ public class PersonRepository {
 	}
 	public int insertCoordinates(String groupid,String latlng)
 	{
-		  return jdc.update("update coordinates set latlng = ? where groupid =?;",latlng,groupid);
+		  return jdc.update("update volonteergroups set coordinates = ? where groupid =?;",latlng,groupid);
 		
 	}
 	public String getCoordiantes(String groupid)
 	{
-		return jdc.queryForObject("select latlng from coordinates where groupid=?;",new Object[] {groupid},String.class);
-		
+		return jdc.queryForObject("select coordinates from volonteergroups where groupid=?;",new Object[] {groupid},String.class);		
 	}
 	
     public HashMap<String,Volonteer> display(String groupid)
     {
     	List<Volonteer> volonteers=jdc.query("Select * from volonteers where groupid=?;",new VolonteerMapper(),groupid);
-    
     	HashMap<String,Volonteer> vGroup = new HashMap<String,Volonteer>();
     	if(!volonteers.isEmpty())
     	for(Volonteer v:volonteers)
     	{
-    		vGroup.put(v.getName(),v);
+    	    String name = jdc.queryForObject("select name from leaderid where leaderid=?",new Object[] {v.getName()} ,String.class);
+    	    v.setName(name);
+    		vGroup.put(name,v);
     	}
     	return vGroup;
     }
