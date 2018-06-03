@@ -31,7 +31,12 @@ public class PersonRepository {
 	}
 	public int insertIntoGroup(String volonteerid,String groupid)
 	{
+		int count = jdc.queryForObject("select count(*) from volonteers where volonteername = ? ",new Object[] {volonteerid}, Integer.class);
+		if(count==0)
 		return jdc.update("insert into volonteers(volonteername,groupid,come,eat)values(?,?,false,false)",volonteerid,groupid);
+		if(count==1)
+			return jdc.update("update volonteers set groupid=? where volonteerid=?",groupid,volonteerid);
+		else return 0;
 		
 	}
 	public int setCome(String volonteerid,String groupid,boolean come)
