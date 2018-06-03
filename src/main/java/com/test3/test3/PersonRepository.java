@@ -35,7 +35,7 @@ public class PersonRepository {
 		if(count==0)
 		return jdc.update("insert into volonteers(volonteername,groupid,come,eat)values(?,?,false,false)",volonteerid,groupid);
 		if(count==1)
-			return jdc.update("update volonteers set groupid=? where volonteerid=?",groupid,volonteerid);
+			return jdc.update("update volonteers set groupid=? where voloneername=?",groupid,volonteerid);
 		else return 0;
 		
 	}
