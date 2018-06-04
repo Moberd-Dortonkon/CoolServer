@@ -30,5 +30,4 @@ public class Volonteer {
 	public boolean isCome() {
 		return come;
 	}
-	public void nothing() {}
 }
