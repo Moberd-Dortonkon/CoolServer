@@ -117,11 +117,13 @@ public class TestContoller {
     
     {
             List<Group>groups=new ArrayList<Group>();
+            List<Group>test = new ArrayList<Group>();
             groups.add(new Group("test","test","test","test","test","test"));
             groups.add(new Group("test","test","test","test","test","test"));
             groups.add(new Group("test","test","test","test","test","test"));
             groups.add(new Group("test","test","test","test","test","test"));
-           	return groups;}
+            for(int i =groups.size()-1;i>=0;i--)test.add(groups.get(i));
+           	return test;}
         
     private String createPassword() 
 	{
