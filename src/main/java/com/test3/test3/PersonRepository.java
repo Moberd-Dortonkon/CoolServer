@@ -81,9 +81,9 @@ public class PersonRepository {
     	if(!volonteers.isEmpty())
     	for(Volonteer v:volonteers)
     	{
-    	    String name = jdc.queryForObject("select name from leaderid where leaderid=?",new Object[] {v.getName()} ,String.class);
-    	    v.setName(name);
-    		vGroup.put(name,v);
+    	    //String name = jdc.queryForObject("select name from leaderid where leaderid=?",new Object[] {v.getName()} ,String.class);
+    	  
+    		vGroup.put(v.getName(),v);
     	}
     	return vGroup;
     }
