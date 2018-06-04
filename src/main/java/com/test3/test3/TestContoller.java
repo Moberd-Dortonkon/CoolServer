@@ -83,7 +83,7 @@ public class TestContoller {
     @RequestMapping("/display/volonteers")
     public List<Volonteer> display(@RequestParam(value="groupid",defaultValue="")String groupid)
     {
-    	return new DisplayVolonteers(jdc.display(groupid));
+    	return jdc.display(groupid);
     	
     }
     @RequestMapping("/display/me")
