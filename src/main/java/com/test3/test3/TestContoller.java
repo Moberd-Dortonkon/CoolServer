@@ -28,7 +28,7 @@ public class TestContoller {
     }
     @RequestMapping("/create/group")
     public String createGroup(@RequestParam(value="leaderid",defaultValue="")String leaderid,
-    		@RequestParam(value="grouptype",defaultValue="")String grouptype
+    		@RequestParam(value="groupdate",defaultValue="")String groupdate
     		,@RequestParam(value="leadername",defaultValue="")String leadername,
             @RequestParam(value="groupname",defaultValue="")String groupName,
             @RequestParam(value="description",defaultValue="")String description)
@@ -36,7 +36,7 @@ public class TestContoller {
     	while(true)
     	{
     	  String groupid = createPassword()	;
-    	  if(jdc.createGroup(leaderid, groupid, grouptype, leadername, groupName,description)==1)return groupid;
+    	  if(jdc.createGroup(leaderid, groupid, groupdate, leadername, groupName,description)==1)return groupid;
     	}
     	
     }
