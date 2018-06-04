@@ -25,8 +25,8 @@ public class PersonRepository {
 		if(count>0)return 0;
 		else 
 		{          jdc.update("insert into coordinates(groupid,latlng)values(?,?);",groupid,null);
-			return jdc.update("insert into volonteerGroups(leaderid,groupid,grouptype,leadername,groupname,description)values(?,?,?,?,?,?)"
-					,leaderid,groupid,grouptype,leadername,groupName,description);
+			return jdc.update("insert into volonteerGroups(leaderid,groupid,grouptype,groupname,description)values(?,?,,?,?,?)"
+					,leaderid,groupid,grouptype,groupName,description);
 		}
 		
 	}
@@ -53,6 +53,7 @@ public class PersonRepository {
 	public List<Group>displayGroup()
 	{
 		HashMap<String,Group>leaders=new HashMap<String, Group>();
+		List<Group>gr=jdc.query("select * from volonteerGroups", new GroupMapper());
 	    return jdc.query("select * from volonteerGroups", new GroupMapper());
 	 //   if(!lgroup.isEmpty())
 	 //   	for(Group g:lgroup)
@@ -97,5 +98,6 @@ public class PersonRepository {
     	return jdc.queryForObject("select * from volonteers where groupid =? and volonteername =?", new VolonteerMapper(),groupid,name);
 		
     }
+    
 	
 }

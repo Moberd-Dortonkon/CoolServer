@@ -36,7 +36,7 @@ public class TestContoller {
     	while(true)
     	{
     	  String groupid = createPassword()	;
-    	  if(jdc.createGroup(leaderid, groupid, grouptype, leadername, groupName,description)==1)return "complete";
+    	  if(jdc.createGroup(leaderid, groupid, grouptype, leadername, groupName,description)==1)return groupid;
     	}
     	
     }
