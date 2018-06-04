@@ -1,5 +1,6 @@
 package com.test3.test3;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -77,15 +78,19 @@ public class PersonRepository {
     public List<Volonteer> display(String groupid)
     {
     	List<Volonteer> volonteers=jdc.query("Select * from volonteers where groupid=?;",new VolonteerMapper(),groupid);
-    	HashMap<String,Volonteer> vGroup = new HashMap<String,Volonteer>();
+    	//HashMap<String,Volonteer> vGroup = new HashMap<String,Volonteer>();
+    	int count=0;
+    	List<Volonteer>realVolo=new ArrayList<Volonteer>();
     	if(!volonteers.isEmpty())
     	for(Volonteer v:volonteers)
-    	{
-    	    //String name = jdc.queryForObject("select name from leaderid where leaderid=?",new Object[] {v.getName()} ,String.class);
-    	  
-    		vGroup.put(v.getName(),v);
+    	{    
+    	    String name = jdc.queryForObject("select name from leaderid where leaderid=?",new Object[] {v.getName()} ,String.class);
+    	    v.setName(name);
+    	    realVolo.add(v);
+    		//vGroup.put(v.getName(),v);
+    		
     	}
-    	return volonteers;
+    	return realVolo;
     }
     public Volonteer getInformation(String groupid,String name)
     {
