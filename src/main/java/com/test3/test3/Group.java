@@ -1,28 +1,27 @@
 package com.test3.test3;
 
 public class Group {
-	String groupType;
+	String groupdate;
 	String leaderName;
 	String groupid;
 	String groupName;
 	String groupdescription;
     String groupcoordinates;
-    
-	public Group(String groupType, String leaderName, String groupid, String groupName, String groupdescription,
+	public Group(String groupdate, String leaderName, String groupid, String groupName, String groupdescription,
 			String groupcoordinates) {
 		super();
-		this.groupType = groupType;
+		this.groupdate = groupdate;
 		this.leaderName = leaderName;
 		this.groupid = groupid;
 		this.groupName = groupName;
 		this.groupdescription = groupdescription;
 		this.groupcoordinates = groupcoordinates;
 	}
-	public String getGroupType() {
-		return groupType;
+	public String getGroupdate() {
+		return groupdate;
 	}
-	public void setGroupType(String groupType) {
-		this.groupType = groupType;
+	public void setGroupdate(String groupdate) {
+		this.groupdate = groupdate;
 	}
 	public String getLeaderName() {
 		return leaderName;
@@ -55,5 +54,4 @@ public class Group {
 		this.groupcoordinates = groupcoordinates;
 	}
 
- 
 }
