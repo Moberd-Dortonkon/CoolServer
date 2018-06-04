@@ -74,7 +74,7 @@ public class PersonRepository {
 		return jdc.queryForObject("select coordinates from volonteergroups where groupid=?;",new Object[] {groupid},String.class);		
 	}
 	
-    public HashMap<String,Volonteer> display(String groupid)
+    public List<Volonteer> display(String groupid)
     {
     	List<Volonteer> volonteers=jdc.query("Select * from volonteers where groupid=?;",new VolonteerMapper(),groupid);
     	HashMap<String,Volonteer> vGroup = new HashMap<String,Volonteer>();
@@ -85,7 +85,7 @@ public class PersonRepository {
     	  
     		vGroup.put(v.getName(),v);
     	}
-    	return vGroup;
+    	return volonteers;
     }
     public Volonteer getInformation(String groupid,String name)
     {
