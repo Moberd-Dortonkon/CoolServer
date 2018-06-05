@@ -30,6 +30,7 @@ public class PersonRepository {
 		}
 		
 	}
+	
 	public int deleteGroup(String groupid)
 	{
 		return jdc.update("delete from volonteergroups where groupid=?",groupid);
@@ -96,6 +97,10 @@ public class PersonRepository {
     		
     	}
     	return realVolo;
+    }
+    public List<MapCoordinates>getMapCoordinates()
+    {
+    	return jdc.query("select * from mapcoordinates",new MapCoordiantesMapper());
     }
     public Volonteer getInformation(String groupid,String name)
     {

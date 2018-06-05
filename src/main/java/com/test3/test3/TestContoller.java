@@ -116,7 +116,11 @@ public class TestContoller {
     	else return "not complete";
     }
     
-   
+    @RequestMapping("/MapCoordinates")
+    public List<MapCoordinates>getCoord()
+    {
+    	return jdc.getMapCoordinates();
+    }
     
     @RequestMapping("")
     public List<Group> start()
