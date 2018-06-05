@@ -108,7 +108,13 @@ public class TestContoller {
 		
 	}
     
-  
+    @RequestMapping("/deleteGroup")
+    public String deleteGroup(@RequestParam(value="groupid",defaultValue="")String groupid) 
+    {
+    	
+    	if(jdc.deleteGroup(groupid)==1)return "Группа удалена";
+    	else return "not complete";
+    }
     
    
     

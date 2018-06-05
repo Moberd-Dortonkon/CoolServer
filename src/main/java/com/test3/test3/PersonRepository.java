@@ -30,6 +30,10 @@ public class PersonRepository {
 		}
 		
 	}
+	public int deleteGroup(String groupid)
+	{
+		return jdc.update("delete from volonteergroups where groupid=?",groupid);
+	}
 	public int insertIntoGroup(String volonteerid,String groupid)
 	{
 		int count = jdc.queryForObject("select count(*) from volonteers where volonteername = ? ",new Object[] {volonteerid}, Integer.class);
